@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">FirstAndroidProgram</string>
+
+
+    <string name="addNumberBtn">Add number</string>
+    <string name="defaultOneNumberFragmentText">Err getArguments()</string>
+    <string name="OneNumberFragmentNumberKey">numberKey</string>
+    <string name="tagForFindOneNumberFragment">tagForFindOneNumberFragment</string>
+
+</resources>
