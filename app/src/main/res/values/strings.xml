@@ -4,7 +4,9 @@
 
     <string name="addNumberBtn">Add number</string>
     <string name="defaultOneNumberFragmentText">Err getArguments()</string>
-    <string name="OneNumberFragmentNumberKey">numberKey</string>
+    <string name="oneNumberFragmentNumberKey">numberKey</string>
     <string name="tagForFindOneNumberFragment">tagForFindOneNumberFragment</string>
+
+    <string name="listFragmentMaxNumberSaveKey">maxNumber</string>
 
 </resources>

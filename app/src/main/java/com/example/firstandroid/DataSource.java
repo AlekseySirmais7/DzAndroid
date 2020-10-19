@@ -5,41 +5,36 @@ import java.util.List;
 
 public class DataSource {
 
-    private static int mStartMinNumber;
-    private static int mStartMaxNumber;
-    private static boolean isStartFulled = false;
-
-
-    private static final DataSource ourInstance = new DataSource();
+    private static DataSource ourInstance = null;
     private final List<Integer> list;
 
-    private DataSource() {
+    private DataSource(int startMinNumber, int startMaxNumber) {
         list = new ArrayList<>();
+        for (int i = startMinNumber; i <= startMaxNumber; i++) {
+            list.add(i);
+        }
     }
 
     public static DataSource getInstance() {
-        if (!isStartFulled) {
-            for (int i = mStartMinNumber; i <= mStartMaxNumber; i++) {
-                ourInstance.list.add(i);
-            }
-            isStartFulled = true;
+        return ourInstance;
+    }
+
+    public static DataSource fullInstance(int startMinNumber, int startMaxNumber) {
+        if (ourInstance == null) {
+            ourInstance = new DataSource(startMinNumber, startMaxNumber);
         }
         return ourInstance;
     }
 
     public List<Integer> getData() {
-        return list;
+        return ourInstance.list;
     }
 
-    public int addNextNumber() {
-        int newMax = list.get(list.size() - 1)  + 1;
-        list.add(newMax);
-        return newMax;
+    public void addNextNumber() {
+        list.add(list.get(list.size() - 1) + 1);
     }
 
-    public static void SetStartMinNumberAndStartMaxNumber(int startMinNumber, int startMaxNumber){
-        mStartMinNumber = startMinNumber;
-        mStartMaxNumber = startMaxNumber;
+    public int getMaxNumber() {
+        return ourInstance.list.get(ourInstance.list.size() - 1);
     }
-
 }

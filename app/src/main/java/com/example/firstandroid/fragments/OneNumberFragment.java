@@ -1,13 +1,15 @@
-package com.example.firstandroid.Fragment;
+package com.example.firstandroid.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import com.example.firstandroid.R;
 
 public class OneNumberFragment extends Fragment {
@@ -26,7 +28,7 @@ public class OneNumberFragment extends Fragment {
         TextView numberText = view.findViewById(R.id.oneNumber);
 
         if (arguments != null) {
-            text = arguments.getString( getResources().getString(R.string.OneNumberFragmentNumberKey));
+            text = arguments.getString(getResources().getString(R.string.oneNumberFragmentNumberKey));
             numberText.setText(text);
         }
 
