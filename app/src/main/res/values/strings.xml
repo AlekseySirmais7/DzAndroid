@@ -1,12 +1,7 @@
 <resources>
     <string name="app_name">FirstAndroidProgram</string>
 
-
-    <string name="addNumberBtn">Add number</string>
-    <string name="defaultOneNumberFragmentText">Err getArguments()</string>
-    <string name="oneNumberFragmentNumberKey">numberKey</string>
-    <string name="tagForFindOneNumberFragment">tagForFindOneNumberFragment</string>
-
-    <string name="listFragmentMaxNumberSaveKey">maxNumber</string>
+    <string name="add_number_btn">Add number</string>
+    <string name="default_one_number_fragment_text">Err getArguments()</string>
 
 </resources>

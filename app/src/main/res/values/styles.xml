@@ -1,16 +1,16 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="app_theme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimaryDark</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/color_primary_dark</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
     </style>
 
 
 
-    <style name="oneTextView">
-        <item name="android:background">@color/btnInList</item>
+    <style name="one_text_view">
+        <item name="android:background">@color/btn_In_list</item>
         <item name="android:radius">3dp</item>
         <item name="android:gravity">center</item>
         <item name="android:color">@android:color/darker_gray</item>

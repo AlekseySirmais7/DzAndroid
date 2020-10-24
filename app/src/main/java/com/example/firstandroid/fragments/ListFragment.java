@@ -1,7 +1,6 @@
 package com.example.firstandroid.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,24 +14,21 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.firstandroid.DataSource;
-import com.example.firstandroid.MainActivity;
+import com.example.firstandroid.NumberViewer;
 import com.example.firstandroid.R;
 
 import java.util.List;
 
 public class ListFragment extends Fragment {
 
+    private static final String NUMBER_KEY = "maxNumber";
+    private static final int START_SOURCE_MIN_NUMBER = 1;
+    private static final int START_SOURCE_MAX_NUMBER = 100;
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-
-        if (outState == null)
-            outState = new Bundle();
-
-        outState.putInt(getResources().getString(R.string.listFragmentMaxNumberSaveKey),
-                DataSource.getInstance().getMaxNumber());
-
-        Log.d("My CHECK:", "onSaveInstanceState: save:" + DataSource.getInstance().getMaxNumber());
+        outState.putInt(NUMBER_KEY, DataSource.getInstance().getMaxNumber());
         super.onSaveInstanceState(outState);
     }
 
@@ -51,28 +47,23 @@ public class ListFragment extends Fragment {
         int maxNumber = -1;
 
         if (savedInstanceState != null) {
-            maxNumber = savedInstanceState.getInt(
-                    getResources().getString(R.string.listFragmentMaxNumberSaveKey),
-                    -1);
-            Log.d("My CHECK", "onViewCreated: get " + maxNumber);
-        } else {
-            Log.d("My CHECK", "savedInstanceState: is NULL! ");
+            maxNumber = savedInstanceState.getInt(NUMBER_KEY, -1);
         }
 
 
         if (maxNumber == -1) {
-            maxNumber = getResources().getInteger(R.integer.startSourceMaxNumber);
+            maxNumber = START_SOURCE_MAX_NUMBER;
         }
 
         List<Integer> startNumberList = DataSource.fullInstance(
-                getResources().getInteger(R.integer.startSourceMinNumber),
+                START_SOURCE_MIN_NUMBER,
                 maxNumber)
                 .getData();
 
         RecyclerView recyclerView = getActivity().findViewById(R.id.recycler);
 
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),
-                getResources().getInteger(R.integer.columnCount)));
+                getResources().getInteger(R.integer.column_count)));
 
         ListFragment.MyAdapter adapter = new ListFragment.MyAdapter(startNumberList);
 
@@ -118,14 +109,14 @@ public class ListFragment extends Fragment {
             Integer numberValue = mData.get(position);
             holder.mNumber.setText(String.valueOf(numberValue));
 
-            int textColor = getResources().getColor(R.color.colorBlueForNumber);
+            int textColor = getResources().getColor(R.color.color_blue_for_number);
             if (numberValue % 2 == 0) {
-                textColor = getResources().getColor(R.color.colorRedForNumber);
+                textColor = getResources().getColor(R.color.color_red_for_number);
             }
             holder.mNumber.setTextColor(textColor);
 
             holder.itemView.setOnClickListener(view -> {
-                ((MainActivity) getActivity()).showNum(numberValue);
+                ((NumberViewer) getActivity()).showNum(numberValue);
             });
         }
 

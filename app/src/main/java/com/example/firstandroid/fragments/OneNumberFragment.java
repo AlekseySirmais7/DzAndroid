@@ -14,6 +14,9 @@ import com.example.firstandroid.R;
 
 public class OneNumberFragment extends Fragment {
 
+    private static final String NUMBER_KEY = "numberKey";
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -22,30 +25,30 @@ public class OneNumberFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        String text = getResources().getString(R.string.defaultOneNumberFragmentText);
+        String text = getResources().getString(R.string.default_one_number_fragment_text);
         Bundle arguments = getArguments();
 
         TextView numberText = view.findViewById(R.id.oneNumber);
 
         if (arguments != null) {
-            text = arguments.getString(getResources().getString(R.string.oneNumberFragmentNumberKey));
+            text = arguments.getString(NUMBER_KEY);
             numberText.setText(text);
         }
 
-        int textColor = getResources().getColor(R.color.colorBlueForNumber);
+        int textColor = getResources().getColor(R.color.color_blue_for_number);
 
         if (Integer.parseInt(text) % 2 == 0) {
-            textColor = getResources().getColor(R.color.colorRedForNumber);
+            textColor = getResources().getColor(R.color.color_red_for_number);
         }
         numberText.setTextColor(textColor);
     }
 
 
-    public static OneNumberFragment newInstance(int param, String numberKey) {
+    public static OneNumberFragment newInstance(int param) {
         OneNumberFragment fragment = new OneNumberFragment();
         Bundle bundle = new Bundle();
 
-        bundle.putString(numberKey, String.valueOf(param));
+        bundle.putString(NUMBER_KEY, String.valueOf(param));
 
         fragment.setArguments(bundle);
         return fragment;

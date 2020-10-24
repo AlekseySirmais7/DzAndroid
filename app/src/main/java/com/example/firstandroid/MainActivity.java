@@ -5,19 +5,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.firstandroid.fragments.ListFragment;
 import com.example.firstandroid.fragments.OneNumberFragment;
 
 public class MainActivity extends AppCompatActivity implements NumberViewer {
 
+    private static final String TAG_FOR_SAVE_ONE_NUMBER_FRAGMENT = "tagForFindOneNumberFragment";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         if (savedInstanceState == null) {
             savedInstanceState = new Bundle();
-            Log.d("MY CHECK", "onCreate: NO Bundle!!!");
         }
 
         super.onCreate(savedInstanceState);
@@ -25,27 +25,24 @@ public class MainActivity extends AppCompatActivity implements NumberViewer {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        ListFragment listFragment = new ListFragment(); // не делаю через newInstance т.к.
-        listFragment.setArguments(savedInstanceState);
+        ListFragment listFragment = new ListFragment();
         if (fragmentManager.findFragmentById(R.id.FragmentContainer) == null) {
             transaction
                     .add(R.id.FragmentContainer, listFragment)
-                    //.addToBackStack(null)
                     .commitAllowingStateLoss();
         }
 
     }
 
     @Override
-    public void showNum(int num) {
+    public void showNum(int number) {
 
-        OneNumberFragment oneNumberFrag = OneNumberFragment.newInstance(num,
-                getResources().getString(R.string.oneNumberFragmentNumberKey));
+        OneNumberFragment oneNumberFrag = OneNumberFragment.newInstance(number);
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.FragmentContainer,
                         oneNumberFrag,
-                        getResources().getString(R.string.tagForFindOneNumberFragment))
+                        TAG_FOR_SAVE_ONE_NUMBER_FRAGMENT)
                 .addToBackStack(null)
                 .commitAllowingStateLoss();
 

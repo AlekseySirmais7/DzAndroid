@@ -9,7 +9,7 @@
 
         <TextView
             android:id="@+id/numberID"
-            style="@style/oneTextView"
+            style="@style/one_text_view"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:textSize="22sp"

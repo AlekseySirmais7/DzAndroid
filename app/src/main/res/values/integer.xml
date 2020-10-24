@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="columnCount">3</integer>
-
-    <integer name="startSourceMinNumber">1</integer>
-    <integer name="startSourceMaxNumber">100</integer>
+    <integer name="column_count">3</integer>
 
 
 </resources>
